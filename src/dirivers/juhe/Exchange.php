@@ -17,6 +17,17 @@ class Exchange extends \larkit\exchange\Exchange
     const QUERY_URL = 'http://op.juhe.cn/onebox/exchange/currency';
 
 
+    public function eur()
+    {
+        $response = $this->get(self::QUERY_URL, [
+            'key' => $this->key,
+            'from' => 'EUR',
+            'to' => 'CNY'
+        ]);
+        return $response;
+    }
+
+
     /**
      * 人民币对应欧元
      */
@@ -24,7 +35,7 @@ class Exchange extends \larkit\exchange\Exchange
     {
         $response = $this->get(self::QUERY_URL, [
             'key' => $this->key,
-            'form' => 'CNY',
+            'from' => 'CNY',
             'to' => 'EUR'
         ]);
         return $response;
