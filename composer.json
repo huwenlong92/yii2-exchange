@@ -1,0 +1,24 @@
+{
+  "name": "larkit/yii2-exchange",
+  "description": "汇查询 工具",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Larkit",
+      "email": "henly@larkit.cn"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.0",
+    "ext-bcmath": "*",
+    "yiisoft/yii2": "*",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "larkit\\exchange\\": "src",
+      "larkit\\exchange\\juhe\\": "src/drivers/juhe"
+    }
+  }
+}
