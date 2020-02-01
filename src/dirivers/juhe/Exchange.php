@@ -30,7 +30,7 @@ class Exchange extends \larkit\exchange\Exchange
         if ($response['error_code']) {
             throw new ExchangeException($response['reason'], $response['error_code']);
         }
-        list($cny, $eur) = $response['result'];
+        list($eur, $cny) = $response['result'];
         return $eur;
     }
 
