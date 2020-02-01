@@ -3,6 +3,8 @@
 
 namespace larkit\exchange\dirivers\juhe;
 
+use larkit\exchange\ExchangeException;
+
 /**
  *  聚合数据 汇率查询
  * Class Exchange
@@ -24,7 +26,12 @@ class Exchange extends \larkit\exchange\Exchange
             'from' => 'EUR',
             'to' => 'CNY'
         ]);
-        return $response;
+
+        if ($response['error_code']) {
+            throw new ExchangeException($response['reason'], $response['error_code']);
+        }
+        list($cny, $eur) = $response['result'];
+        return $eur;
     }
 
 

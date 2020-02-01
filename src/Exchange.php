@@ -60,11 +60,9 @@ abstract class Exchange extends Component
             }
             $response = Json::decode($response->getBody()->getContents());
             $this->trigger(self::EVENT_AFTER_REQUEST, $event);
+            return $response;
         } catch (\Exception $e) {
-            $response = [];
-            $response['code'] = $e->getCode() ?: 4000;
-            $response['msg'] = $e->getMessage();
+            throw new ExchangeException($e->getMessage(), $e->getCode());
         }
-        return $response;
     }
 }
